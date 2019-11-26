@@ -35,3 +35,19 @@ button {
   border-radius: 5px;
   box-shadow: 2px 5px 5px #333;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.low {
+  color: green;
+}
+
+.medium {
+  color: blue;
+}
+
+.high {
+  color: red;
+}
