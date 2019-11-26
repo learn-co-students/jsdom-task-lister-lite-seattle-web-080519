@@ -32,7 +32,7 @@ function clickSubmit(e) {
     notesArray.push(note);
     counter++;
   }
-  cycleNotes(notesArray);
+  loopNotes(notesArray);
   newTaskDescription.value = "";
   priority.value = "";
   date.value = "";
@@ -40,7 +40,7 @@ function clickSubmit(e) {
   noteId = null;
 }
 
-function cycleNotes(notesArray) {
+function loopNotes(notesArray) {
   document.getElementById("tasks").innerHTML = "";
   const newNotesAr = notesArray.slice();
   newNotesAr.sort(function(a, b) {
@@ -55,7 +55,7 @@ function appendOneNote(note) {
   const li = document.createElement("li");
   const span = document.createElement("span");
   span.innerText = `${note.text} - ${note.priority} - ${note.date}`;
-  span.id = counter;
+  span.id = note.id;
   span.setAttribute("class", note.priority);
 
   const deleteBtn = document.createElement("button");
@@ -76,6 +76,9 @@ function appendOneNote(note) {
 function deleteNote(note) {
   const deletedNote = document.getElementById(note.id);
   deletedNote.parentNode.remove();
+  return (notesArray = notesArray.filter(noteIterator => {
+    return noteIterator.id !== note.id;
+  }));
 }
 
 function editNote(note) {
@@ -89,11 +92,3 @@ function editNote(note) {
   noteId = note.id;
   editMode = true;
 }
-
-// [x] A delete function that will remove tasks from your list
-// [x] A priority value selected from a dropdown that is used to determine the color of the text in the list
-// (e.g. red for high priority, yellow for medium, green for low)
-// [x] As a challenge, implement a sorting functionality that displays the tasks ascending or descending order based on priority
-// [x] An additional input field (e.g. user, duration, date due)
-// [x] Ability to edit tasks
-// Something of your choice! The main objective is to add a feature that allows the user's input to affect the DOM

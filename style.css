@@ -36,6 +36,10 @@ button {
   box-shadow: 2px 5px 5px #333;
 }
 
+span {
+  margin-right: 10px;
+}
+
 ul {
   list-style-type: none;
 }
@@ -45,7 +49,7 @@ ul {
 }
 
 .medium {
-  color: blue;
+  color: yellow;
 }
 
 .high {
