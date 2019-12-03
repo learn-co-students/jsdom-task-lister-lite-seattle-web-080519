@@ -24,7 +24,7 @@ function clickSubmit(event) {
     priorityValue: priority.selectedIndex
   };
   if (editMode) {
-    populateNote(note);
+    updateNotesArray(note);
   } else {
     notesArray.push(note);
     counter++;
@@ -33,8 +33,8 @@ function clickSubmit(event) {
   loopNotes(notesArray);
 }
 
-function populateNote(note) {
-  notesArray.map(noteIterator => {
+function updateNotesArray(note) {
+  notesArray.find(noteIterator => {
     if (noteIterator.id === noteId) {
       const index = notesArray.indexOf(noteIterator);
       notesArray[index] = note;
