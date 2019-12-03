@@ -23,7 +23,7 @@ function clickSubmit(event) {
     date: date.value,
     priorityValue: priority.selectedIndex
   };
-  if (noteId && editMode) {
+  if (editMode) {
     populateNote(note);
   } else {
     notesArray.push(note);
