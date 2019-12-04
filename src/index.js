@@ -12,7 +12,7 @@ let noteId = null;
 const newTaskDescription = document.getElementById("new-task-description");
 const priority = document.getElementById("priority-select");
 const date = document.getElementById("date");
-const submitButton = document.getElementById("create-task-form")[3];
+const submitButton = document.querySelector("input[type=submit]");
 
 function clickSubmit(event) {
   event.preventDefault();
@@ -34,9 +34,8 @@ function clickSubmit(event) {
 }
 
 function updateNotesArray(note) {
-  notesArray.find(noteIterator => {
+  notesArray.forEach((noteIterator, index) => {
     if (noteIterator.id === noteId) {
-      const index = notesArray.indexOf(noteIterator);
       notesArray[index] = note;
     }
   });
@@ -79,9 +78,9 @@ function appendOneNote(note) {
 function deleteNote(note) {
   const deletedNote = document.getElementById(note.id);
   deletedNote.parentNode.remove();
-  return (notesArray = notesArray.filter(noteIterator => {
+  notesArray = notesArray.filter(noteIterator => {
     return noteIterator.id !== note.id;
-  }));
+  });
 }
 
 function editNote(note) {
